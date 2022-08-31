@@ -1,21 +1,21 @@
 from pydantic import BaseModel
 
 
-class todoBaseSchema(BaseModel):
+class TodoBaseSchema(BaseModel):
     text: str
     completed: bool
 
 
-class todoSchema(todoBaseSchema):
+class TodoSchema(TodoBaseSchema):
     owner_id: int
 
     class Config:
         orm_mode = True
 
 
-class todoResponseSchema(todoSchema):
+class TodoResponseSchema(TodoSchema):
     id: int
 
 
-class todoUpdateSchema(todoBaseSchema):
+class TodoUpdateSchema(TodoBaseSchema):
     id: int

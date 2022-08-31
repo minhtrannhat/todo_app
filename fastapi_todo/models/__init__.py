@@ -1,2 +1,2 @@
-from .todo import Todo
-from .user import User
+from .todomodel import TodoModel
+from .usermodel import UserModel

@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from pydantic import EmailStr
+from typing import List
 
-from fastapi_todo.schemas.todoSchemas import todoSchema
+from fastapi_todo.schemas.todo_schemas import TodoSchema
 
 
 class UserBase(BaseModel):
@@ -9,19 +10,19 @@ class UserBase(BaseModel):
 
 
 class UserSchema(UserBase):
-    first_name: str
-    last_name: str
+    f_name: str
+    l_name: str
 
     class Config:
-        org_mode = True
+        orm_mode = True
 
 
 class UserCreateSchema(UserSchema):
     password: str
 
     class Config:
-        org_mode = False
+        orm_mode = False
 
 
 class UserFullSchema(UserSchema):
-    todos: list[todoSchema]
+    todos: List[TodoSchema]
