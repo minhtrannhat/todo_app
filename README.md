@@ -25,12 +25,11 @@ Interactive API at: https://www.todo.minhtrannhat.com
 
 ### For developers:
 + [Swagger UI](https://swagger.io/tools/swagger-ui) auto generated from OpenAPI, allows visualizing and interacting with the API without a front-end.
-+ Async functionalities.
++ Async functionalities built into FastAPI.
 + Schemas are validated by [Pydantic](https://pydantic-docs.helpmanual.io/).
 + Containerized with [Docker](https://www.docker.com/) and [Compose](https://docs.docker.com/compose/) for easy deployment.
 + [pre-commit hook](https://pre-commit.com/) for auto linting before git commit.
 + Api tests done by [Pytest](https://docs.pytest.org/) and [Tavern](https://taverntesting.github.io).
-+ CI runs tests on push by GitHub Actions.
 
 ## Setup
 Clone the repo: `git clone https://github.com/minhtrannhat/todo_app`
@@ -38,7 +37,7 @@ Clone the repo: `git clone https://github.com/minhtrannhat/todo_app`
 ### Environment
 + Change the content of the `environment` key in `docker-compose.yml` to your liking.
     ```
-    - SQLALCHEMY_DB_URL='postgresql://fastapi_todo:fastapi_todo@db:5432/todo'
+    - SQLALCHEMY_DB_URL=postgresql://fastapi_todo:fastapi_todo@db:5432/todo
     - SECRET_KEY='D8C013F4063E4CE4A67B3587A45FAD1F6D3241A0EA015C919A9E071CD5AA8273'
     - ALGORITHM='HS256'
     - ACCESS_TOKEN_EXPIRE_MINUTES=60
@@ -46,8 +45,7 @@ Clone the repo: `git clone https://github.com/minhtrannhat/todo_app`
 
 ### Build using docker and docker-compose (recommended):
 
-+ `docker-compose up --build -d` to start building the containers in the background.
-+ Go to `localhost:8000/docs` to access the interactive Swagger UI of the API.
++ Run the script `docker.sh` to build and get docker container up and running.
 
 ### Build without Docker:
 

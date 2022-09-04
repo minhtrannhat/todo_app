@@ -3,25 +3,16 @@ services:
   api:
     container_name: fastapi_todo_api
     environment:
-      - SQLALCHEMY_DB_URL='postgresql://fastapi_todo:fastapi_todo@db:5432/todo'
+      - SQLALCHEMY_DB_URL=postgresql://fastapi_todo:fastapi_todo@db:5432/todo
       - SECRET_KEY='D8C013F4063E4CE4A67B3587A45FAD1F6D3241A0EA015C919A9E071CD5AA8273'
       - ALGORITHM='HS256'
       - ACCESS_TOKEN_EXPIRE_MINUTES=60
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - SQLALCHEMY_DB_URL=postgresql://fastapi_todo:fastapi_todo@db:5432/todo
-    # api web server will keep running when connection to postgres is found on port 5432
-    command: sh -c 'alembic upgrade head && uvicorn fastapi_todo.app:app --host 0.0.0.0 --port 8000 --reload'
+    command: sh -c 'uvicorn fastapi_todo.app:app --host 0.0.0.0 --port 8000 --reload'
     volumes:
       - .:/app
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 1s
-        max_attempts: 5
-        window: 30s
     ports:
       - 8000:8000
     depends_on:
