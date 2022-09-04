@@ -27,7 +27,6 @@ Interactive API at: https://www.todo.minhtrannhat.com
 + [Swagger UI](https://swagger.io/tools/swagger-ui) auto generated from OpenAPI, allows visualizing and interacting with the API without a front-end.
 + Async functionalities.
 + Schemas are validated by [Pydantic](https://pydantic-docs.helpmanual.io/).
-+ Environment variables are parsed by `.env`, validated by [Pydantic](https://pydantic-docs.helpmanual.io/).
 + Containerized with [Docker](https://www.docker.com/) and [Compose](https://docs.docker.com/compose/) for easy deployment.
 + [pre-commit hook](https://pre-commit.com/) for auto linting before git commit.
 + Api tests done by [Pytest](https://docs.pytest.org/) and [Tavern](https://taverntesting.github.io).
@@ -61,19 +60,6 @@ Clone the repo: `git clone https://github.com/minhtrannhat/todo_app`
 > While developing, run `pre-commit install` before committing any changes. [pre-commit](https://pre-commit.com/) runs a style check through all changed files before committing. The rules of `pre-commits` are in `.pre-commit-config.yml` file.
 
 ## Testing
-
-### With Docker container built:
-+ `chmod +x run_tests.sh && ./run_tests.sh` to run tests inside the container.
-### Local environment:
-+ Start the app on local port 8000 (refer to the build instruction above).
-+ `chmod +x run_tests.sh && ./run_tests.sh` to run tests using script.
-+ Without script, tests can be ran with command `pytest app/tests`.
-
-## Directory Structure
-+ `fastapi_todo` is the main directory containing all the source code.
-+ `./fastapi_todo/app.py`: the main start up file.
-+ `./run_tests.sh`: the script file to run tests.
-+ Each of the subfolder in `./app` has a `README.md` for more details.
 
 ## Deployment
 The project is containerized and deployed with docker-compose and NGIN with SSL certificates signed by `certbot` on my personal Vultr VM.

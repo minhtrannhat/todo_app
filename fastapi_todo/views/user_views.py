@@ -35,7 +35,7 @@ def sign_up(user_data: UserCreateSchema, db: Session = Depends(get_db)):  # type
             status_code=409,
             detail="email exist",
         )
-    new_user = user_crud.add_user(db, user_data)
+    new_user: UserSchema = user_crud.add_user(db, user_data)
     return new_user
 
 
