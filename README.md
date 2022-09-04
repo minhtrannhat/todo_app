@@ -1,6 +1,6 @@
 # Inventory Management
 
-Interactive API at: https://www.todo.minhtrannhat.com
+Interactive API at: <https://todo.minhtrannhat.com/docs>
 
 <p align="center">
     <img src="./docs/demo.png" />
