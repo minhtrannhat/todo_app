@@ -15,11 +15,9 @@ python-jose = { extras = ["cryptography"], version = "^3.3.0" }
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
 sqlalchemy-stubs = "^0.4"
 psycopg2-binary = "^2.9.3"
+alembic = "^1.8.1"
 
 [tool.poetry.dev-dependencies]
-tox = "^3.25.1"
-mypy = "^0.971"
-alembic = "^1.8.1"
 pytest = "^7.1.2"
 pylint = "^2.15.0"
 
