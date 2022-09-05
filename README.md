@@ -1,4 +1,4 @@
-# Inventory Management
+# Todo API
 
 Interactive API at: <https://todo.minhtrannhat.com/docs>
 
@@ -58,6 +58,7 @@ Clone the repo: `git clone https://github.com/minhtrannhat/todo_app`
 > While developing, run `pre-commit install` before committing any changes. [pre-commit](https://pre-commit.com/) runs a style check through all changed files before committing. The rules of `pre-commits` are in `.pre-commit-config.yml` file.
 
 ## Testing
+Prune old docker container, reset database and run tests by running this command: `./docker.sh prune && ./docker.sh && ./run_tests.sh`
 
 ## Deployment
 The project is containerized and deployed with docker-compose and NGIN with SSL certificates signed by `certbot` on my personal Vultr VM.

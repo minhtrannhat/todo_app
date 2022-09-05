@@ -1,4 +1,5 @@
 version: "3.9"
+
 services:
   db:
     image: postgres:13-alpine
@@ -12,12 +13,19 @@ services:
       - POSTGRES_DB=todo
     networks:
       - fastapinetwork
+    # makes sure the database is up before bringing up the api service
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   api:
     container_name: fastapi_todo_api
     environment:
       - SQLALCHEMY_DB_URL=postgresql://fastapi_todo:fastapi_todo@db:5432/todo
-      - SECRET_KEY='D8C013F4063E4CE4A67B3587A45FAD1F6D3241A0EA015C919A9E071CD5AA8273'
-      - ALGORITHM='HS256'
+      - SECRET_KEY=D8C013F4063E4CE4A67B3587A45FAD1F6D3241A0EA015C919A9E071CD5AA8273
+      - ALGORITHM=HS256
       - ACCESS_TOKEN_EXPIRE_MINUTES=60
     build:
       context: .
@@ -28,7 +36,8 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     links:
       - db:db
     networks:
